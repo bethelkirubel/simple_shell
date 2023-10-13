@@ -5,32 +5,38 @@
  */
 int main(void)
 {
-char cmd[MAX_CMD_LEN];
-int child_stat;
-pid_t child;
-char *argv[] = {NULL, NULL, NULL};
-char *envp[] = {NULL, NULL, NULL};
-
+char *line = NULL;
+char *argv[2];
+size_t len = 0;
+ssize_t read;
+int status;
+pid_t pid;
 while (1)
 {
-memset(cmd, 0, MAX_CMD_LEN);
 printf("$ ");
-if (fgets(cmd, MAX_CMD_LEN, stdin) == NULL)
+read = getline(&line, &len, stdin);
+if (read == -1 || strcmp(line, "exit\n") == 0)
 {
-printf("\n");
-exit(0);
+exit(EXIT_SUCCESS);
 }
-
-cmd[strspn(cmd, "\n")] = '\0';
-
-child = fork();
-if (child == 0)
+line[read - 1] = '\0';
+argv[0] = line;
+argv[1] = NULL;
+printarg(line, argv);
+pid = fork();
+if (pid == -1)
 {
-if (execve(argv[0], argv, envp)  == -1)
 perror("Error");
+printf("\n");
+continue;
 }
-wait(&child_stat);
+if (pid == 0)
+{
+if (execvp(argv[0], argv) == -1)
+perror("Error executing command");
+exit(EXIT_FAILURE);
 }
-free(command);
-return (0);
+wait(&status);
+}
+return (EXIT_SUCCESS);
 }

@@ -1,30 +1,22 @@
 #include "main.h"
 
 /**
- * printarg - handles arguments in shell
- * @argc: argument count
+ * printarg - prints arguments
+ * @line: command
  * @argv: argument value
- * Return: nothing
+ *
  */
 
-void printarg(int argc, char *argv[])
+void printarg(char *line, char *argv[])
 {
 int i = 0;
-char command[1024] = " ";
-int status = system(command);
 
-
-for (i = 0; i < argc; i++)
+char *token = strtok(line, " ");
+for (i = 0; i < MAXARGS - 1 && token != NULL; i++)
 {
-strcat(command, argv[i]);
-strcat(command, " ");
+argv[i] = token;
+token = strtok(NULL, " ");
 }
-if (status == -1)
-{
-perror("Error executing command input");
-return;
+argv[MAXARGS - 1] = NULL;
 }
-return;
-}
-
 

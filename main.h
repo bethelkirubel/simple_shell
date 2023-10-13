@@ -16,11 +16,11 @@
 #include <sys/wait.h>
 #include <errno.h>
 
+extern char *line;
+
 void clear_command(void);
 void read_and_execute(void);
-void printarg(int argc, char *argv[]);
-extern char *command;
-extern char cmd[MAX_CMD_LEN];
+void printarg(char *line, char *argv[]);
 
 #endif
 

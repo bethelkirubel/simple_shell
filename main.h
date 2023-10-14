@@ -17,9 +17,10 @@
 #include <errno.h>
 
 extern char *line;
-
-void clear_command(void);
-void read_and_execute(void);
+extern char *argv[];
+extern int argc;
+void line_handle(void);
+void forking(int argc, char *argv[]);
 void printarg(char *line, char *argv[]);
 
 #endif

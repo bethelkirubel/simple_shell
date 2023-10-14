@@ -4,7 +4,6 @@
  * Return: Nothing
  */
 
-char *line = NULL;
 
 void line_handle(void)
 {
@@ -20,9 +19,8 @@ exit(EXIT_SUCCESS);
 }
 line[read - 1] = '\0';
 
-
-
-printarg(line, argv);
+printarg(line);
+for (argc = 0; argv[argc] != NULL; argc++);
 return;
 }
 

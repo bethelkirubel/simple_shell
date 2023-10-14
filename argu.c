@@ -7,7 +7,7 @@
  *
  */
 
-void printarg(char *line, char *argv[])
+void printarg(char *line)
 {
 int i = 0;
 
@@ -17,5 +17,5 @@ for (i = 0; i < MAXARGS - 1 && token != NULL; i++)
 argv[i] = token;
 token = strtok(NULL, " ");
 }
-argv[MAXARGS - 1] = NULL;
+argv[i] = NULL;
 }

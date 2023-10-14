@@ -18,10 +18,10 @@
 
 extern char *line;
 extern int argc;
-extern char **argv;
+extern char *argv[MAXARGS];
 void line_handle(void);
 void forking(int argc, char *argv[]);
-void printarg(char *line, char *argv[]);
+void printarg(char *line);
 
 #endif
 

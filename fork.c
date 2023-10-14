@@ -5,15 +5,13 @@
  * Return: Nothing
  */
 
-int argc;
-char **argv;
-
 void forking(int argc, char *argv[])
 {
-char *line = argv[1];
+char *line = argv[0];
 pid_t pid;
 
-if (argc < 2) {
+if (argc < 1)
+{
         printf("Please provide a command to execute.\n");
         return;
     }

@@ -17,8 +17,8 @@
 #include <errno.h>
 
 extern char *line;
-extern char *argv[];
 extern int argc;
+extern char **argv;
 void line_handle(void);
 void forking(int argc, char *argv[]);
 void printarg(char *line, char *argv[]);

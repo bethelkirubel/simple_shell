@@ -4,6 +4,10 @@
  * fork - forking only when command exists
  * Return: Nothing
  */
+
+int argc;
+char **argv;
+
 void forking(int argc, char *argv[])
 {
 char *line = argv[1];

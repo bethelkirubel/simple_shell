@@ -7,7 +7,7 @@
 int i = 0;
 char *argv[MAXARGS];
 int argc = 0;
-
+char *line = NULL;
 int main(void)
 {
 

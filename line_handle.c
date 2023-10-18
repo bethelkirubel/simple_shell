@@ -4,7 +4,6 @@
  * Return: Nothing
  */
 
-
 void line_handle(void)
 {
 
@@ -18,9 +17,11 @@ if (read == -1 || strcmp(line, "exit\n") == 0)
 exit(EXIT_SUCCESS);
 }
 line[read - 1] = '\0';
-
+argv[0] = line;
+argv[1] = NULL;
 printarg(line);
-for (argc = 0; argv[argc] != NULL; argc++);
+for (argc = 0; argv[argc] != NULL; argc++)
+;
 return;
 }
 

@@ -1,7 +1,9 @@
 #include "main.h"
 
 /**
- * fork - forking only when command exists
+ * forking - forking only when command exists
+ * @argc: argument count
+ * @argv: argument value
  * Return: Nothing
  */
 
@@ -12,34 +14,21 @@ pid_t pid;
 
 if (argc < 1)
 {
-        printf("Please provide a command to execute.\n");
-        return;
-    }
+printf("Please provide a command to execute.\n");
+return;
+}
 
-
-if (access(line, F_OK) != -1)
-{
 pid = fork();
 if (pid == 0)
 {
-if (execv(line, argv) == -1)
+if (execvp(line, argv) == -1)
 {
 perror("Error executing command");
 exit(EXIT_FAILURE);
 }
-else 
-{
-execv(line, argv);
 }
-}
-else if(pid > 1)
+else if (pid > 1)
 {
 wait(NULL);
 }
-}
-else
-{
-perror("Command not found\n");
-}
-return;
 }

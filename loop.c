@@ -4,18 +4,23 @@
  * Return: Nothing
  */
 
-char *line = NULL;
-int argc = 0;
+int i = 0;
 char *argv[MAXARGS];
+int argc = 0;
 
 int main(void)
 {
+
 while (1)
 {
 printf("$ ");
-line_handle();       
+line_handle();
 forking(argc, argv);
-    }
 
-    return 0;
+if (strcmp(line, "env\n") == 0)
+{
+printenv();
+}
+}
+return (0);
 }

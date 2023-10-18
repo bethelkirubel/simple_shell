@@ -3,10 +3,9 @@
 /**
  * printarg - prints arguments
  * @line: command
- * @argv: argument value
  *
  */
-
+extern char *argv[MAXARGS];
 void printarg(char *line)
 {
 int i = 0;
